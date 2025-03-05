@@ -9,6 +9,7 @@ namespace MidEx2
     internal class Program
     {
         public double amountToConvert = 0;
+        private static double ammountToConvert;
         const double UtoE = 0.95;
         const double UtoJ = 25;
         const double EtoJ = 26;
@@ -28,12 +29,23 @@ namespace MidEx2
             double convertedAmount = amountToConvert * EtoJ;
             Console.WriteLine($"The Converted amount is: {convertedAmount}");
         }
+        static void JPYtoUSD(double ammountToConvert) 
+        {
+            double convertedAmount = ammountToConvert / UtoJ;
+            Console.WriteLine($"The Converted amount is: {convertedAmount}");
+        }
+        static void JPYtoEUR(double ammountToConvert) 
+        { 
+            double convertedAmount = ammountToConvert / EtoJ;
+            Console.WriteLine($"The Converted amount is: {convertedAmount}");
+        }
 
         static void Main(string[] args)
         {
             double amountToConvert = 0;
             string fromCurrency = "";
             string toCurrency = "";
+
 
             Console.WriteLine("** WELCOME TO THE CURRENCY EXCHANGE APP **");
             Console.Write("Please enter the amount to convert: ");
@@ -59,10 +71,19 @@ namespace MidEx2
             {
                 EURtoJPY(amountToConvert);
             }
+            else if (fromCurrency == "3" && toCurrency == "1") 
+            { 
+                JPYtoUSD(amountToConvert);
+            }
+            else if (fromCurrency == "3" && toCurrency == "2")
+            {
+                JPYtoEUR(amountToConvert);
+            }
             else
             {
                 Console.WriteLine("Invalid currency selection.");
             }
         }
+        //Pushed to MidEx2 Repo
     }
 }
